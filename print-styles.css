@@ -1,0 +1,114 @@
+/* Print-specific styles to ensure proper pagination */
+@media print {
+    /* General adjustments */
+    body {
+        padding: 0;
+        margin: 0;
+        background-color: white;
+        max-width: none;
+    }
+
+    /* Header and footer customization */
+    @page {
+        margin: 1cm;
+        size: A4 portrait;
+    }
+
+    /* Hide elements that are not needed in print */
+    .print-button {
+        display: none;
+    }
+
+    /* Reset box-shadow and borders for print */
+    .section, .sidebar, .banner {
+        box-shadow: none;
+        border-radius: 0;
+        break-inside: avoid;
+    }
+
+    /* Print layout adjustments */
+    .main-container {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+        page-break-inside: avoid;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 20px;
+    }
+
+    .profile-img-container {
+        width: 150px;
+        height: 150px;
+        grid-row: span 2;
+    }
+
+    /* Make sure content sections don't break across pages */
+    .section {
+        page-break-inside: avoid;
+        margin-bottom: 15px;
+        border: 1px solid #eee;
+    }
+
+    /* Specific sections breaking */
+    section.section:nth-child(3) {
+        page-break-before: always;
+    }
+
+    /* Ensure experience items don't break */
+    .experience-item {
+        page-break-inside: avoid;
+    }
+
+    /* Adjust content sample containers */
+    .content-sample {
+        page-break-inside: avoid;
+    }
+
+    /* Ensure platform items display properly */
+    .platforms-grid {
+        grid-template-columns: repeat(4, 1fr);
+        page-break-inside: avoid;
+    }
+
+    /* Adjust font sizes for better print readability */
+    h1 {
+        font-size: 24pt;
+    }
+
+    h2 {
+        font-size: 16pt;
+    }
+
+    h3 {
+        font-size: 12pt;
+    }
+
+    p, li {
+        font-size: 10pt;
+    }
+
+    /* Hide URLs on print */
+    a {
+        text-decoration: none;
+    }
+
+    a[href^="http"]:after {
+        content: "";
+    }
+    
+    /* Ensure each skill bar is properly displayed in print */
+    .skill-level {
+        position: relative;
+    }
+    
+    /* Make sure the footer appears at the bottom of the last page */
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+}
